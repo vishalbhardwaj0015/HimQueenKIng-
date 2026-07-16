@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Star, Heart, Search, Filter } from "lucide-react";
+import { handleBookClick } from "../utils/auth";
 
 const allDestinations = [
   { id: 1, name: "Manali", region: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", rating: 4.9, reviews: 2140, price: 12999, badge: "Bestseller", badgeBg: "bg-amber-500", desc: "Snow-capped peaks, ancient temples, and vibrant café culture in the heart of Kullu Valley.", tags: ["Mountains", "Snow", "Adventure"] },
@@ -114,7 +115,7 @@ const Destinations = () => {
                     <span className="text-[11px] text-gray-400 dark:text-gray-500">From</span>
                     <p className="text-xl font-black text-orange-600">₹{dest.price.toLocaleString()}</p>
                   </div>
-                  <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
+                  <button onClick={handleBookClick} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
                     Book Now
                   </button>
                 </div>

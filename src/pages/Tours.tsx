@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Clock, Users, Star, CheckCircle2, ArrowRight, MapPin, Mountain, Search } from "lucide-react";
+import { handleBookClick } from "../utils/auth";
 
 const allTours = [
   { id: 1, title: "Manali Snow Adventure", destination: "Manali, HP", duration: "6D / 5N", group: "2–12", difficulty: "Moderate", rating: 4.9, reviews: 312, originalPrice: 18999, price: 14999, image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=700&q=80", highlights: ["Solang Valley Snow Activities", "Rohtang Pass Excursion", "Old Manali Café Tour", "Hadimba Temple Visit"], includes: ["Hotel", "Meals", "Transport", "Guide"], badge: "Most Booked", color: "from-indigo-500 to-indigo-600" },
@@ -90,7 +91,7 @@ const Tours = () => {
                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">₹{tour.originalPrice.toLocaleString()}</span>
                       <p className="text-2xl font-black text-gray-900 dark:text-white">₹{tour.price.toLocaleString()}</p>
                     </div>
-                    <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
+                    <button onClick={handleBookClick} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
                       Book Now <ArrowRight size={15} />
                     </button>
                   </div>

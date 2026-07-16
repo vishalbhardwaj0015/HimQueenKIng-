@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Star, Search } from "lucide-react";
+import { handleBookClick } from "../utils/auth";
 
 const allHotels = [
   { id: 1, name: "HimQueen Estate & Resort", location: "Shimla", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80", rating: 4.9, reviews: 420, price: 8999, desc: "Nestled in the lush hills of Shimla, this heritage property offers luxury suites, personal fireplaces, and majestic Himalayan views.", amenities: ["Heated Pool", "Spa", "Fine Dining", "Free WiFi", "Fireplace"], badge: "Luxury", badgeColor: "bg-amber-500" },
@@ -62,7 +63,7 @@ const Hotels = () => {
                     <span className="text-[11px] text-gray-400 dark:text-gray-500">Starting from</span>
                     <p className="text-2xl font-black text-rose-600">₹{hotel.price.toLocaleString()}<span className="text-xs font-normal text-gray-400 dark:text-gray-500">/night</span></p>
                   </div>
-                  <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 text-white text-sm font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all active:scale-[0.97]">
+                  <button onClick={handleBookClick} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 text-white text-sm font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all active:scale-[0.97]">
                     Book Now
                   </button>
                 </div>

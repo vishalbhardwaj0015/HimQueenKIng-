@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Star, Heart } from "lucide-react";
+import { handleBookClick } from "../utils/auth";
 
 const destinations = [
   { id: 1, name: "Manali", country: "Himachal Pradesh",
@@ -72,7 +73,7 @@ const DestinationCard = ({ dest, index }) => {
             <span className="text-violet-400 font-bold text-lg">₹{dest.price.toLocaleString()}</span>
             <span className="text-white/40 text-xs">/person</span>
           </div>
-          <button className="bg-gradient-to-r from-violet-600 to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-xl hover:opacity-90 transition">
+          <button onClick={handleBookClick} className="bg-gradient-to-r from-violet-600 to-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-xl hover:opacity-90 transition">
             Book Now
           </button>
         </div>
