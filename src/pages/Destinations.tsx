@@ -26,7 +26,7 @@ const Destinations = () => {
   });
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6]">
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -36,15 +36,15 @@ const Destinations = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-        <div className="bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3 mb-6 border border-gray-100">
-          <Search size={20} className="text-gray-400 shrink-0" />
-          <input type="text" placeholder="Search destinations by name or region..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 bg-transparent text-gray-900 placeholder-gray-400 outline-none text-sm" />
+        <div className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-4 flex items-center gap-3 mb-6 border border-gray-100 dark:border-gray-700">
+          <Search size={20} className="text-gray-400 dark:text-gray-500 shrink-0" />
+          <input type="text" placeholder="Search destinations by name or region..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none text-sm" />
         </div>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {budgetLevels.map((b) => (
             <button key={b.key} onClick={() => setBudgetFilter(b.key)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
-              budgetFilter === b.key ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white text-gray-600 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200"
+              budgetFilter === b.key ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white dark:bg-[#1a1a2e] text-gray-600 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200 dark:border-gray-700"
             }`}>
               {b.label}
             </button>
@@ -54,7 +54,7 @@ const Destinations = () => {
         <div className="flex flex-wrap gap-2 mb-8">
           {tags.map((t) => (
             <button key={t} onClick={() => setFilter(t)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
-              filter === t ? "bg-[#1a1a2e] text-white border-[#1a1a2e]" : "bg-white text-gray-600 hover:border-[#1a1a2e] hover:text-[#1a1a2e] border-gray-200"
+              filter === t ? "bg-[#1a1a2e] text-white border-[#1a1a2e]" : "bg-white dark:bg-[#1a1a2e] text-gray-600 dark:text-gray-400 hover:border-[#1a1a2e] hover:text-[#1a1a2e] border-gray-200 dark:border-gray-700"
             }`}>
               {t}
             </button>
@@ -73,24 +73,24 @@ const Destinations = () => {
                   </span>
                   <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap">
                     {dest.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-sm text-gray-700 text-[10px] font-medium">{tag}</span>
+                      <span key={tag} className="px-2 py-0.5 rounded-full bg-white/90 dark:bg-[#1a1a2e]/90 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-[10px] font-medium">{tag}</span>
                     ))}
                   </div>
                 </div>
               </Link>
               <div className="p-5">
-                <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-1.5">
+                <div className="flex items-center gap-1.5 text-gray-400 dark:text-gray-500 text-xs mb-1.5">
                   <MapPin size={12} /> {dest.region}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-[#b8860b] transition-colors">{dest.name}</h3>
-                <p className="text-sm text-gray-500 mb-3 line-clamp-2">{dest.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1 group-hover:text-[#b8860b] transition-colors">{dest.name}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">{dest.desc}</p>
                 <div className="flex items-center gap-1.5 mb-4">
                   <Star size={13} fill="#f59e0b" color="#f59e0b" />
-                  <span className="text-sm font-semibold text-gray-900">{dest.rating}</span>
-                  <span className="text-xs text-gray-400">({dest.reviews.toLocaleString()})</span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">{dest.rating}</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">({dest.reviews.toLocaleString()})</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400">{dest.badge} · {dest.region}</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">{dest.badge} · {dest.region}</span>
                   <Link to={`/destinations/${dest.id}`} className="btn-primary text-sm !py-2.5 !px-5">
                     View Details
                   </Link>
@@ -101,7 +101,7 @@ const Destinations = () => {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-gray-400">
+          <div className="text-center py-20 text-gray-400 dark:text-gray-500">
             <Filter size={48} className="mx-auto mb-4 opacity-40" />
             <p className="text-lg font-medium">No destinations found</p>
             <p className="text-sm">Try adjusting your filters or search</p>

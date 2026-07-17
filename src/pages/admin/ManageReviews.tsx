@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Star, Trash2, CheckCircle, XCircle, Eye, Camera } from "lucide-react";
+import { Star, Trash2, CheckCircle, XCircle, Eye } from "lucide-react";
 import { api } from "../../api";
 import { useAuth } from "../../store/authStore";
 

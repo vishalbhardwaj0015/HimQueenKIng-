@@ -44,7 +44,7 @@ const StatItem = ({ stat, index }) => {
       <span className="font-display text-3xl sm:text-4xl font-bold" style={{ color: stat.color }}>
         {count}{stat.suffix}
       </span>
-      <span className="text-gray-500 text-sm font-medium">{stat.label}</span>
+      <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">{stat.label}</span>
     </motion.div>
   );
 };
@@ -52,7 +52,7 @@ const StatItem = ({ stat, index }) => {
 const StatsSection = () => (
   <section className="py-12 px-4 bg-[#f5f0e8]">
     <div className="max-w-5xl mx-auto">
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-200">
+      <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-200 dark:divide-gray-700">
         {stats.map((s, i) => <StatItem key={s.label} stat={s} index={i} />)}
       </div>
     </div>

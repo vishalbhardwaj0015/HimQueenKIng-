@@ -29,22 +29,22 @@ const DestinationCard = ({ dest, index }) => (
         </span>
         <div className="absolute bottom-3 left-3 flex gap-1.5 flex-wrap">
           {dest.tags.map(t => (
-            <span key={t} className="bg-white/90 backdrop-blur-sm text-gray-700 text-xs px-2.5 py-0.5 rounded-full font-medium">{t}</span>
+            <span key={t} className="bg-white/90 dark:bg-[#1a1a2e]/90 backdrop-blur-sm text-gray-700 dark:text-gray-300 text-xs px-2.5 py-0.5 rounded-full font-medium">{t}</span>
           ))}
         </div>
       </div>
       <div className="p-5">
-        <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-1.5">
+        <div className="flex items-center gap-1.5 text-gray-400 dark:text-gray-500 text-xs mb-1.5">
           <MapPin size={12} /> {dest.region}
         </div>
-        <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-[#b8860b] transition-colors">{dest.name}</h3>
-        <div className="flex items-center gap-1 text-xs text-gray-500 mb-3">
+        <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg mb-2 group-hover:text-[#b8860b] transition-colors">{dest.name}</h3>
+        <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
           <Star size={12} fill="#f59e0b" color="#f59e0b" />
-          <span className="font-semibold text-gray-900">{dest.rating}</span>
+          <span className="font-semibold text-gray-900 dark:text-gray-100">{dest.rating}</span>
           <span>({dest.reviews.toLocaleString()} reviews)</span>
         </div>
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-          <span className="text-xs text-gray-400">{dest.region}</span>
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+          <span className="text-xs text-gray-400 dark:text-gray-500">{dest.region}</span>
           <span className="text-[#b8860b] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
             Explore <ArrowRight size={14} />
           </span>
@@ -59,7 +59,7 @@ const DestinationsSection = () => {
   const filtered = filter === "All" ? destinations : destinations.filter(d => d.budget === filter);
 
   return (
-    <section className="py-24 px-4 bg-[#faf9f6]">
+    <section className="py-24 px-4 bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="max-w-7xl mx-auto">
         <motion.div className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ const DestinationsSection = () => {
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
                 filter === f.key
                   ? "bg-[#b8860b] text-white border-[#b8860b] shadow-md shadow-[#b8860b]/15"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-[#b8860b] hover:text-[#b8860b]"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-[#b8860b] hover:text-[#b8860b] dark:bg-[#1a1a2e] dark:text-gray-400 dark:border-gray-700 dark:hover:border-[#b8860b] dark:hover:text-[#b8860b]"
               }`}>
               {f.label}
             </button>

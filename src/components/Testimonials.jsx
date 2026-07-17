@@ -32,7 +32,7 @@ const Testimonials = () => {
   const t = allReviews[active] || fallbackReviews[0];
 
   return (
-    <section className="py-24 px-4 bg-[#faf9f6]">
+    <section className="py-24 px-4 bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="max-w-7xl mx-auto">
         <motion.div className="text-center mb-14"
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ const Testimonials = () => {
             <AnimatePresence mode="wait">
               <motion.div key={active} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.4 }}
-                className="bg-white rounded-2xl p-8 relative border border-gray-100 shadow-sm">
+                className="bg-white dark:bg-[#1a1a2e] rounded-2xl p-8 relative border border-gray-100 dark:border-gray-700 shadow-sm">
                 <Quote size={40} className="text-[#b8860b]/10 absolute top-6 right-6" />
                 <div className="flex gap-0.5 mb-5">
                   {Array.from({ length: t.rating }).map((_, i) => (
@@ -59,22 +59,22 @@ const Testimonials = () => {
                     <Star key={`empty-${i}`} size={16} color="#e5e7eb" />
                   ))}
                 </div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6 italic">"{t.text}"</p>
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6 italic">"{t.text}"</p>
                 <div className="flex items-center gap-4">
                   {t.photo ? (
-                    <img src={t.photo} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-gray-100" />
+                    <img src={t.photo} alt={t.name} className="w-12 h-12 rounded-full object-cover border-2 border-gray-100 dark:border-gray-700" />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-[#b8860b] text-white flex items-center justify-center text-sm font-bold border-2 border-gray-100">
+                    <div className="w-12 h-12 rounded-full bg-[#b8860b] text-white flex items-center justify-center text-sm font-bold border-2 border-gray-100 dark:border-gray-700">
                       {getInitials(t.name)}
                     </div>
                   )}
                   <div>
-                    <p className="text-gray-900 font-bold">{t.name}</p>
-                    {t.location && <p className="text-gray-400 text-sm flex items-center gap-1"><MapPin size={11} /> {t.location}</p>}
+                    <p className="text-gray-900 dark:text-gray-100 font-bold">{t.name}</p>
+                    {t.location && <p className="text-gray-400 dark:text-gray-500 text-sm flex items-center gap-1"><MapPin size={11} /> {t.location}</p>}
                     {t.tour && <p className="text-[#b8860b] text-xs mt-0.5 font-medium">{t.tour}</p>}
                   </div>
                   {t.photo && (
-                    <span className="ml-auto text-xs text-gray-400 flex items-center gap-1"><Camera size={11} /> Traveler photo</span>
+                    <span className="ml-auto text-xs text-gray-400 dark:text-gray-500 flex items-center gap-1"><Camera size={11} /> Traveler photo</span>
                   )}
                 </div>
               </motion.div>
@@ -82,17 +82,17 @@ const Testimonials = () => {
 
             <div className="flex items-center gap-4 mt-6">
               <button onClick={() => setActive(a => (a === 0 ? allReviews.length - 1 : a - 1))}
-                className="w-10 h-10 border border-gray-200 rounded-full text-gray-500 hover:border-[#b8860b] hover:text-[#b8860b] transition flex items-center justify-center bg-white">
+                className="w-10 h-10 border border-gray-200 dark:border-gray-700 rounded-full text-gray-500 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] transition flex items-center justify-center bg-white dark:bg-[#1a1a2e]">
                 <ChevronLeft size={18} />
               </button>
               <div className="flex gap-2 flex-wrap">
                 {allReviews.map((_, i) => (
                   <button key={i} onClick={() => setActive(i)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-[#b8860b]" : "w-1.5 bg-gray-300"}`} />
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-8 bg-[#b8860b]" : "w-1.5 bg-gray-300 dark:bg-gray-600"}`} />
                 ))}
               </div>
               <button onClick={() => setActive(a => (a + 1) % allReviews.length)}
-                className="w-10 h-10 border border-gray-200 rounded-full text-gray-500 hover:border-[#b8860b] hover:text-[#b8860b] transition flex items-center justify-center bg-white">
+                className="w-10 h-10 border border-gray-200 dark:border-gray-700 rounded-full text-gray-500 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] transition flex items-center justify-center bg-white dark:bg-[#1a1a2e]">
                 <ChevronRight size={18} />
               </button>
             </div>
@@ -103,7 +103,7 @@ const Testimonials = () => {
             {allReviews.slice(0, 4).map((r, i) => (
               <button key={r.id} onClick={() => setActive(i)}
                 className={`flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-300 border ${
-                  i === active ? "bg-white border-[#b8860b]/30 shadow-sm" : "bg-white border-gray-100 hover:border-gray-200"
+                  i === active ? "bg-white dark:bg-[#1a1a2e] border-[#b8860b]/30 shadow-sm" : "bg-white dark:bg-[#1a1a2e] border-gray-100 dark:border-gray-700 hover:border-gray-200 dark:hover:border-gray-600"
                 }`}>
                 {r.photo ? (
                   <img src={r.photo} alt={r.name} className="w-11 h-11 rounded-full object-cover" />
@@ -113,8 +113,8 @@ const Testimonials = () => {
                   </div>
                 )}
                 <div className="min-w-0">
-                  <p className="text-gray-900 font-semibold text-sm">{r.name}</p>
-                  <p className="text-gray-400 text-xs truncate">{r.tour || r.text.slice(0, 40) + "..."}</p>
+                  <p className="text-gray-900 dark:text-gray-100 font-semibold text-sm">{r.name}</p>
+                  <p className="text-gray-400 dark:text-gray-500 text-xs truncate">{r.tour || r.text.slice(0, 40) + "..."}</p>
                 </div>
               </button>
             ))}
@@ -122,7 +122,7 @@ const Testimonials = () => {
             {/* Write Review Button */}
             <button onClick={() => setShowForm(!showForm)}
               className={`flex items-center justify-center gap-2 p-3 rounded-xl border-2 border-dashed text-sm font-semibold transition-all ${
-                showForm ? "border-[#b8860b] text-[#b8860b] bg-[#b8860b]/5" : "border-gray-300 text-gray-500 hover:border-[#b8860b] hover:text-[#b8860b]"
+                showForm ? "border-[#b8860b] text-[#b8860b] bg-[#b8860b]/5" : "border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b]"
               }`}>
               <Star size={16} /> {showForm ? "Hide Form" : "Write a Review"}
             </button>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,47 +24,56 @@ import ManagePackages from "./pages/admin/ManagePackages";
 import ManageReviews from "./pages/admin/ManageReviews";
 import Requests from "./pages/admin/Requests";
 import NotFound from "./pages/NotFound";
+import { useTheme } from "./store/themeStore";
 
-const PublicLayout = () => (
-  <div className="min-h-screen flex flex-col bg-[#faf9f6]">
-    <Header />
-    <div className="flex-1">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/destinations" element={<Destinations />} />
-        <Route path="/destinations/:id" element={<DestinationDetail />} />
-        <Route path="/tours" element={<Tours />} />
-        <Route path="/tours/:id" element={<TourDetail />} />
-        <Route path="/treks" element={<Treks />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/hotels/:id" element={<HotelDetail />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/dream-destination" element={<DreamDestination />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+const PublicLayout = () => {
+  const { dark } = useTheme();
+  return (
+    <div className={`min-h-screen flex flex-col ${dark ? "bg-[#0f0f1a] text-gray-200" : "bg-[#faf9f6] text-gray-900"}`}>
+      <Header />
+      <div className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/destinations/:id" element={<DestinationDetail />} />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/tours/:id" element={<TourDetail />} />
+          <Route path="/treks" element={<Treks />} />
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="/hotels/:id" element={<HotelDetail />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dream-destination" element={<DreamDestination />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+      <WhatsAppButton />
     </div>
-    <Footer />
-    <WhatsAppButton />
-  </div>
-);
+  );
+};
 
-const App = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/admin/login" element={<Login />} />
-      <Route path="/admin" element={<AdminLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="tours" element={<ManageTours />} />
-        <Route path="treks" element={<ManageTreks />} />
-        <Route path="hotels" element={<ManageHotels />} />
-        <Route path="packages" element={<ManagePackages />} />
-        <Route path="reviews" element={<ManageReviews />} />
-        <Route path="requests" element={<Requests />} />
-      </Route>
-      <Route path="*" element={<PublicLayout />} />
-    </Routes>
-  </BrowserRouter>
-);
+const App = () => {
+  const { load } = useTheme();
+  useEffect(() => { load(); }, [load]);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="tours" element={<ManageTours />} />
+          <Route path="treks" element={<ManageTreks />} />
+          <Route path="hotels" element={<ManageHotels />} />
+          <Route path="packages" element={<ManagePackages />} />
+          <Route path="reviews" element={<ManageReviews />} />
+          <Route path="requests" element={<Requests />} />
+        </Route>
+        <Route path="*" element={<PublicLayout />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;

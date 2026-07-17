@@ -23,7 +23,7 @@ const Hotels = () => {
   });
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6]">
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -33,15 +33,15 @@ const Hotels = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-        <div className="bg-white rounded-2xl shadow-lg p-4 flex items-center gap-3 mb-6 border border-gray-100">
-          <Search size={20} className="text-gray-400 shrink-0" />
-          <input type="text" placeholder="Search hotels by name or location..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 bg-transparent text-gray-900 placeholder-gray-400 outline-none text-sm" />
+        <div className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-4 flex items-center gap-3 mb-6 border border-gray-100 dark:border-gray-700">
+          <Search size={20} className="text-gray-400 dark:text-gray-500 shrink-0" />
+          <input type="text" placeholder="Search hotels by name or location..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none text-sm" />
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">
           {budgetLevels.map((b) => (
             <button key={b.key} onClick={() => setBudgetFilter(b.key)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
-              budgetFilter === b.key ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white text-gray-600 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200"
+              budgetFilter === b.key ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white dark:bg-[#1a1a2e] text-gray-600 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200 dark:border-gray-700"
             }`}>
               {b.label}
             </button>
@@ -66,18 +66,18 @@ const Hotels = () => {
               <div className="p-6">
                 <div className="flex items-center gap-1.5 mb-2">
                   <Star size={13} fill="#f59e0b" color="#f59e0b" />
-                  <span className="text-sm font-semibold text-gray-900">{hotel.rating}</span>
-                  <span className="text-xs text-gray-400">({hotel.reviews} reviews)</span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">{hotel.rating}</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">({hotel.reviews} reviews)</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#b8860b] transition-colors">{hotel.name}</h3>
-                <p className="text-sm text-gray-500 mb-4 line-clamp-2">{hotel.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-[#b8860b] transition-colors">{hotel.name}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">{hotel.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {hotel.amenities.slice(0, 4).map((a) => (
-                    <span key={a} className="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">{a}</span>
+                    <span key={a} className="px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-medium">{a}</span>
                   ))}
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs text-gray-400">{hotel.badge} · {hotel.rating}★</span>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <span className="text-xs text-gray-400 dark:text-gray-500">{hotel.badge} · {hotel.rating}★</span>
                   <Link to={`/hotels/${hotel.id}`} className="btn-primary text-sm !py-2.5 !px-5">
                     Enquire Now
                   </Link>
@@ -88,7 +88,7 @@ const Hotels = () => {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-gray-400">
+          <div className="text-center py-20 text-gray-400 dark:text-gray-500">
             <p className="text-lg font-medium">No hotels match your filters</p>
             <p className="text-sm">Try adjusting your budget filter</p>
           </div>

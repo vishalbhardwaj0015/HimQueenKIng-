@@ -27,13 +27,13 @@ const Contact = () => {
 
   if (submitted) {
     return (
-      <div className="pt-24 pb-20 min-h-screen bg-[#faf9f6] flex items-center justify-center px-4">
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200 }} className="bg-white rounded-2xl shadow-lg p-10 sm:p-14 text-center max-w-md w-full border border-gray-100">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-50 flex items-center justify-center">
+      <div className="pt-24 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a] flex items-center justify-center px-4">
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200 }} className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-10 sm:p-14 text-center max-w-md w-full border border-gray-100 dark:border-gray-700">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center">
             <CheckCircle size={36} className="text-green-500" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Request Received!</h2>
-          <p className="text-gray-500 mb-6">Thank you for reaching out, <strong>{form.name}</strong>! Our travel experts will get back to you within 24 hours.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3">Request Received!</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">Thank you for reaching out, <strong>{form.name}</strong>! Our travel experts will get back to you within 24 hours.</p>
           <a href="/" className="inline-flex px-8 py-3 rounded-xl bg-[#b8860b] text-white font-semibold hover:bg-[#996f08] transition-all">
             Back to Home
           </a>
@@ -43,7 +43,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6]">
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       {/* Hero */}
       <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1920&q=60')] bg-cover bg-center" />
@@ -56,37 +56,37 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
         <div className="grid lg:grid-cols-[1fr_400px] gap-8">
           {/* Form */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-gray-700">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-[#b8860b]/10 flex items-center justify-center">
                 <MessageSquare size={20} className="text-[#b8860b]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-gray-900">Send us a Message</h2>
-                <p className="text-sm text-gray-500">We typically reply within 24 hours</p>
+                <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Send us a Message</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400">We typically reply within 24 hours</p>
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label>
-                <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Enter your full name" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Full Name *</label>
+                <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Enter your full name" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address *</label>
-                  <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="you@example.com" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Email Address *</label>
+                  <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="you@example.com" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number *</label>
-                  <input type="tel" name="phone" value={form.phone} onChange={handleChange} required placeholder="+91 XXXXX XXXXX" className="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Phone Number *</label>
+                  <input type="tel" name="phone" value={form.phone} onChange={handleChange} required placeholder="+91 XXXXX XXXXX" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Your Message *</label>
-                <textarea name="message" value={form.message} onChange={handleChange} required rows={5} placeholder="Tell us about your travel plans, questions, or requirements..." className="w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm resize-none" />
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Your Message *</label>
+                <textarea name="message" value={form.message} onChange={handleChange} required rows={5} placeholder="Tell us about your travel plans, questions, or requirements..." className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none focus:ring-2 focus:ring-[#b8860b] focus:border-transparent transition-all text-sm resize-none" />
               </div>
-              {error && <p className="text-sm text-red-500 bg-red-50 px-4 py-2 rounded-lg">{error}</p>}
+              {error && <p className="text-sm text-red-500 bg-red-50 dark:bg-red-900/30 px-4 py-2 rounded-lg">{error}</p>}
               <motion.button type="submit" disabled={loading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#b8860b] text-white font-semibold hover:bg-[#996f08] transition-all disabled:opacity-60">
                 {loading ? (
                   <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -99,28 +99,28 @@ const Contact = () => {
 
           {/* Info */}
           <div className="space-y-6">
-            <div className="bg-white rounded-2xl shadow-lg p-7 border border-gray-100">
-              <h3 className="font-bold text-gray-900 mb-4">Get in Touch</h3>
+            <div className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-7 border border-gray-100 dark:border-gray-700">
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-4">Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#b8860b]/10 flex items-center justify-center shrink-0"><MapPin size={18} className="text-[#b8860b]" /></div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Visit Us</p>
-                    <p className="text-sm text-gray-500">Mall Road, Manali, Himachal Pradesh, India 175131</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Visit Us</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Mall Road, Manali, Himachal Pradesh, India 175131</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#b8860b]/10 flex items-center justify-center shrink-0"><Phone size={18} className="text-[#b8860b]" /></div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Call Us</p>
-                    <a href="tel:+919805556015" className="text-sm text-gray-500 hover:text-[#b8860b]">+91 98055 56015</a>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Call Us</p>
+                    <a href="tel:+919805556015" className="text-sm text-gray-500 dark:text-gray-400 hover:text-[#b8860b]">+91 98055 56015</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[#b8860b]/10 flex items-center justify-center shrink-0"><Mail size={18} className="text-[#b8860b]" /></div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">Email Us</p>
-                    <a href="mailto:hello@himqueenking.com" className="text-sm text-gray-500 hover:text-[#b8860b]">hello@himqueenking.com</a>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Email Us</p>
+                    <a href="mailto:hello@himqueenking.com" className="text-sm text-gray-500 dark:text-gray-400 hover:text-[#b8860b]">hello@himqueenking.com</a>
                   </div>
                 </div>
               </div>
@@ -135,10 +135,10 @@ const Contact = () => {
               </div>
             </div>
 
-            <a href="/dream-destination" className="block bg-white rounded-2xl shadow-lg p-7 hover:shadow-xl transition-all border border-gray-100">
-              <p className="text-sm text-gray-500 mb-1">Not sure where to go?</p>
-              <p className="font-bold text-gray-900">Tell us your dream destination →</p>
-              <p className="text-xs text-gray-400 mt-1">Our experts will plan the perfect trip for you</p>
+            <a href="/dream-destination" className="block bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-7 hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Not sure where to go?</p>
+              <p className="font-bold text-gray-900 dark:text-gray-100">Tell us your dream destination →</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Our experts will plan the perfect trip for you</p>
             </a>
           </div>
         </div>

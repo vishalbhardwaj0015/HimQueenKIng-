@@ -21,7 +21,7 @@ const whyUs = [
 ];
 
 const Services = () => (
-  <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6]">
+  <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
     <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
       <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=60')] bg-cover bg-center" />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -31,11 +31,11 @@ const Services = () => (
     </div>
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
-      <div className="bg-white rounded-2xl shadow-lg p-8 mb-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border border-gray-100">
+      <div className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-8 mb-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border border-gray-100 dark:border-gray-700">
         {whyUs.map((s) => (
           <div key={s.label}>
             <p className="text-3xl font-bold text-[#b8860b]">{s.num}</p>
-            <p className="text-sm text-gray-500 mt-1">{s.label}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{s.label}</p>
           </div>
         ))}
       </div>
@@ -46,12 +46,12 @@ const Services = () => (
           return (
             <motion.div key={s.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-lg transition-all group">
+              className="bg-white dark:bg-[#1a1a2e] rounded-2xl p-7 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all group">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: `${s.color}10` }}>
                 <Icon size={24} style={{ color: s.color }} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{s.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{s.desc}</p>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{s.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{s.desc}</p>
             </motion.div>
           );
         })}
@@ -59,7 +59,7 @@ const Services = () => (
 
       <div className="mt-16 bg-[#1a1a2e] rounded-3xl p-10 sm:p-14 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-display">Ready for Your Next Adventure?</h2>
-        <p className="text-gray-400 max-w-xl mx-auto mb-8">Let our travel experts craft the perfect Himalayan journey for you.</p>
+        <p className="text-gray-400 dark:text-gray-500 max-w-xl mx-auto mb-8">Let our travel experts craft the perfect Himalayan journey for you.</p>
         <a href="/dream-destination" className="inline-flex px-8 py-3.5 rounded-xl bg-[#b8860b] text-white font-bold hover:bg-[#996f08] transition-all">
           Plan My Trip →
         </a>
