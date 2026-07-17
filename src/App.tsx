@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -15,12 +15,6 @@ import Contact from "./pages/Contact";
 import DreamDestination from "./pages/DreamDestination";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Login from "./pages/admin/Login";
-import Dashboard from "./pages/admin/Dashboard";
-import ManageTours from "./pages/admin/ManageTours";
-import ManageTreks from "./pages/admin/ManageTreks";
-import ManageHotels from "./pages/admin/ManageHotels";
-import ManagePackages from "./pages/admin/ManagePackages";
-import Requests from "./pages/admin/Requests";
 import NotFound from "./pages/NotFound";
 
 const PublicLayout = () => (

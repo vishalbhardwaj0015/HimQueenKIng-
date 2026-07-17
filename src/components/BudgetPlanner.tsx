@@ -2,7 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock, Users, MapPin, Star, Zap } from "lucide-react";
-import { tours, destinations, BudgetLevel, budgetRanges } from "../data/travelData";
+import { tours, destinations, budgetRanges } from "../data/travelData";
+import type { BudgetLevel } from "../data/travelData";
 
 const budgetOptions: { key: BudgetLevel; icon: string; desc: string }[] = [
   { key: "budget", icon: "🎒", desc: "Backpacker-friendly stays, shared transport, and the best of nature on a shoestring." },

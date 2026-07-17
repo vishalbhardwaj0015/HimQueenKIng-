@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mountain, Clock, TrendingUp, Calendar, Search, ArrowRight, MessageCircle } from "lucide-react";
-import { budgetRanges, BudgetLevel } from "../data/travelData";
+import { Mountain, Clock, TrendingUp, Calendar, Search, MessageCircle } from "lucide-react";
+import { budgetRanges } from "../data/travelData";
+import type { BudgetLevel } from "../data/travelData";
 
 const allTreks = [
   { id: 1, title: "Hampta Pass Trek", difficulty: "Moderate", duration: "5D / 4N", altitude: "14,100 ft", bestTime: "Jun – Oct", budget: "mid" as BudgetLevel, image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80", desc: "One of the most dramatic crossover treks in Himachal. Traverses from lush green meadows of Kullu to the cold desert of Lahaul.", region: "Himachal Pradesh" },

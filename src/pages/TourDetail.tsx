@@ -33,7 +33,7 @@ const TourDetail = () => {
               <div className="relative h-72 sm:h-96">
                 <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <span className={`absolute top-4 left-4 px-3 py-1 rounded-lg text-sm font-bold text-white bg-gradient-to-r ${tour.color}`}>{tour.badge}</span>
+                <span className={`absolute top-4 left-4 px-3 py-1 rounded-lg text-sm font-bold text-white ${budgetRanges[tour.budget].color}`}>{tour.badge}</span>
                 <div className="absolute bottom-6 left-6">
                   <h1 className="text-3xl sm:text-4xl font-black text-white mb-2">{tour.title}</h1>
                   <div className="flex items-center gap-2 text-white/80 text-sm">
