@@ -62,6 +62,13 @@ export const api = {
   submitContact: (data: ItemData) => request("/contact", { method: "POST", body: JSON.stringify(data) }),
   submitDream: (data: ItemData) => request("/dream-destination", { method: "POST", body: JSON.stringify(data) }),
 
+  // Reviews
+  getApprovedReviews: () => request("/reviews"),
+  getAllReviews: () => request("/reviews/all"),
+  updateReviewStatus: (id: number, status: string) =>
+    request(`/reviews/${id}/status`, { method: "PUT", body: JSON.stringify({ status }) }),
+  deleteReview: (id: number) => request(`/reviews/${id}`, { method: "DELETE" }),
+
   // Requests (admin)
   getRequests: () => request("/requests"),
   getStats: () => request("/requests/stats"),

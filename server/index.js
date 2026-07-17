@@ -11,6 +11,7 @@ import packageRoutes from "./routes/packages.js";
 import contactRoutes from "./routes/contact.js";
 import dreamRoutes from "./routes/dreamDestination.js";
 import requestRoutes from "./routes/requests.js";
+import reviewRoutes from "./routes/reviews.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use("/api/packages", packageRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/dream-destination", dreamRoutes);
 app.use("/api/requests", requestRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 

@@ -97,3 +97,15 @@ CREATE TABLE IF NOT EXISTS dream_requests (
   status ENUM('pending','planning','completed') DEFAULT 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  location VARCHAR(255),
+  tour VARCHAR(255),
+  rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5),
+  text TEXT NOT NULL,
+  photo LONGTEXT,
+  status ENUM('pending','approved','rejected') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -8,6 +8,7 @@ const navItems = [
   { label: "Treks", path: "/admin/treks", icon: "⛰️" },
   { label: "Hotels", path: "/admin/hotels", icon: "🏨" },
   { label: "Packages", path: "/admin/packages", icon: "📦" },
+  { label: "Reviews", path: "/admin/reviews", icon: "⭐" },
   { label: "Requests", path: "/admin/requests", icon: "📋" },
 ];
 
