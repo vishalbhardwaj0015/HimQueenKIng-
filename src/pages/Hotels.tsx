@@ -63,7 +63,7 @@ const Hotels = () => {
                     <span className="text-[11px] text-gray-400 dark:text-gray-500">Starting from</span>
                     <p className="text-2xl font-black text-rose-600">₹{hotel.price.toLocaleString()}<span className="text-xs font-normal text-gray-400 dark:text-gray-500">/night</span></p>
                   </div>
-                  <button onClick={handleBookClick} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 text-white text-sm font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all active:scale-[0.97]">
+                  <button onClick={(e) => handleBookClick(e, `Hi! I want to book "${hotel.name}" in ${hotel.location} - ₹${hotel.price.toLocaleString()}/night. Please share booking details.`)} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 text-white text-sm font-semibold hover:shadow-lg hover:shadow-rose-500/25 transition-all active:scale-[0.97]">
                     Book Now
                   </button>
                 </div>

@@ -115,7 +115,7 @@ const Destinations = () => {
                     <span className="text-[11px] text-gray-400 dark:text-gray-500">From</span>
                     <p className="text-xl font-black text-orange-600">₹{dest.price.toLocaleString()}</p>
                   </div>
-                  <button onClick={handleBookClick} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
+                  <button onClick={(e) => handleBookClick(e, `Hi! I want to book a trip to "${dest.name}" (${dest.region}) - From ₹${dest.price.toLocaleString()}. Please share tour packages.`)} className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
                     Book Now
                   </button>
                 </div>

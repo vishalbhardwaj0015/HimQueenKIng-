@@ -91,7 +91,7 @@ const Tours = () => {
                       <span className="text-xs text-gray-400 dark:text-gray-500 line-through">₹{tour.originalPrice.toLocaleString()}</span>
                       <p className="text-2xl font-black text-gray-900 dark:text-white">₹{tour.price.toLocaleString()}</p>
                     </div>
-                    <button onClick={handleBookClick} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
+                    <button onClick={(e) => handleBookClick(e, `Hi! I want to book "${tour.title}" (${tour.destination}) - ${tour.duration} for ₹${tour.price.toLocaleString()}. Please share booking details.`)} className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold hover:shadow-lg hover:shadow-orange-500/25 transition-all active:scale-[0.97]">
                       Book Now <ArrowRight size={15} />
                     </button>
                   </div>
