@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, MessageCircle } from "lucide-react";
 
 interface EnquiryFormProps {
   itemName: string;
@@ -10,7 +10,8 @@ export default function EnquiryForm({ itemName, itemType }: EnquiryFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [place, setPlace] = useState("");
+  const [budget, setBudget] = useState("");
+  const [travelers, setTravelers] = useState("");
   const [desc, setDesc] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -21,7 +22,8 @@ export default function EnquiryForm({ itemName, itemType }: EnquiryFormProps) {
       `👤 *Name:* ${name}\n` +
       `📞 *Phone:* ${phone}\n` +
       `📧 *Email:* ${email}\n` +
-      `📍 *Traveling From:* ${place}\n` +
+      `💰 *Budget:* ${budget || "Not specified"}\n` +
+      `👥 *Travelers:* ${travelers || "Not specified"}\n` +
       (desc ? `📝 *Details:* ${desc}` : "");
 
     window.open(`https://wa.me/919805556015?text=${encodeURIComponent(msg)}`, "_blank");
@@ -41,21 +43,39 @@ export default function EnquiryForm({ itemName, itemType }: EnquiryFormProps) {
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-      <h3 className="text-lg font-bold text-gray-900 mb-1">Get More Details</h3>
-      <p className="text-sm text-gray-500 mb-4">Fill the form and we'll contact you on WhatsApp</p>
+      <div className="flex items-center gap-2 mb-1">
+        <MessageCircle size={18} className="text-[#25D366]" />
+        <h3 className="text-lg font-bold text-gray-900">Get a Custom Quote</h3>
+      </div>
+      <p className="text-sm text-gray-500 mb-4">Tell us your budget and we'll design the perfect trip for you</p>
       <form onSubmit={handleSubmit} className="space-y-3">
         <input type="text" required placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none" />
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none" />
         <input type="tel" required placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none" />
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none" />
         <input type="email" required placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none" />
-        <input type="text" required placeholder="Traveling From (e.g. Delhi)" value={place} onChange={(e) => setPlace(e.target.value)}
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none" />
-        <textarea rows={3} placeholder="Any special requirements..." value={desc} onChange={(e) => setDesc(e.target.value)}
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none resize-none" />
-        <button type="submit" className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:shadow-lg transition-all active:scale-[0.98]">
-          <Send size={16} /> Send Enquiry via WhatsApp
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none" />
+        <select value={budget} onChange={(e) => setBudget(e.target.value)}
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none bg-white text-gray-900">
+          <option value="">Your Budget (per person)</option>
+          <option value="Under ₹10,000">Under ₹10,000</option>
+          <option value="₹10,000 – ₹25,000">₹10,000 – ₹25,000</option>
+          <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
+          <option value="₹50,000+">₹50,000+</option>
+        </select>
+        <select value={travelers} onChange={(e) => setTravelers(e.target.value)}
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none bg-white text-gray-900">
+          <option value="">Number of Travelers</option>
+          <option value="1 Person">1 Person</option>
+          <option value="2 People">2 People</option>
+          <option value="3-5 People">3–5 People</option>
+          <option value="6-10 People">6–10 People</option>
+          <option value="10+ People">10+ (Group)</option>
+        </select>
+        <textarea rows={3} placeholder="Tell us about your travel dates or any special requirements..." value={desc} onChange={(e) => setDesc(e.target.value)}
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-[#b8860b] focus:border-[#b8860b] outline-none resize-none" />
+        <button type="submit" className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold transition-all active:scale-[0.98]">
+          <Send size={16} /> Get Quote on WhatsApp
         </button>
       </form>
     </div>

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, CheckCircle2, ArrowLeft } from "lucide-react";
-import { hotels } from "../data/travelData";
+import { Star, MapPin, CheckCircle2, ArrowLeft, Tag } from "lucide-react";
+import { hotels, budgetRanges } from "../data/travelData";
 import EnquiryForm from "../components/EnquiryForm";
 
 const HotelDetail = () => {
@@ -12,15 +12,17 @@ const HotelDetail = () => {
     return (
       <div className="pt-24 pb-20 min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Hotel not found</h1>
-        <Link to="/hotels" className="text-rose-600 font-semibold hover:underline">← Back to Hotels</Link>
+        <Link to="/hotels" className="text-[#b8860b] font-semibold hover:underline">← Back to Hotels</Link>
       </div>
     );
   }
 
+  const budgetInfo = budgetRanges[hotel.budget];
+
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/hotels" className="inline-flex items-center gap-2 text-gray-600 hover:text-rose-600 font-medium mb-6 mt-4 transition">
+        <Link to="/hotels" className="inline-flex items-center gap-2 text-gray-600 hover:text-[#b8860b] font-medium mb-6 mt-4 transition">
           <ArrowLeft size={18} /> Back to Hotels
         </Link>
 
@@ -47,6 +49,9 @@ const HotelDetail = () => {
                   <span className="text-sm font-semibold">{hotel.rating}</span>
                   <span className="text-xs text-gray-500">({hotel.reviews} reviews)</span>
                 </div>
+                <div className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold text-white ${budgetInfo.color}`}>
+                  <Tag size={13} /> {budgetInfo.range}
+                </div>
               </div>
 
               <p className="text-gray-600 mb-6">{hotel.desc}</p>
@@ -54,7 +59,7 @@ const HotelDetail = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-3">Amenities</h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {hotel.amenities.map((a) => (
-                  <span key={a} className="px-3 py-1.5 rounded-full bg-rose-50 text-rose-700 text-sm font-medium">{a}</span>
+                  <span key={a} className="px-3 py-1.5 rounded-full bg-gray-100 text-gray-700 text-sm font-medium">{a}</span>
                 ))}
               </div>
 
@@ -72,9 +77,12 @@ const HotelDetail = () => {
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <p className="text-sm text-gray-500 mb-1">Starting from</p>
-                <span className="text-3xl font-black text-rose-600">₹{hotel.price.toLocaleString()}</span>
-                <span className="text-sm text-gray-400">/night</span>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold text-white mb-3 ${budgetInfo.color}`}>
+                  <Tag size={14} /> {budgetInfo.range}
+                </div>
+                <p className="text-sm text-gray-500 mb-1">Budget Level</p>
+                <p className="text-lg font-bold text-gray-900">{budgetInfo.label}</p>
+                <p className="text-xs text-gray-400 mt-2">Get a custom quote based on your dates and room preferences</p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>

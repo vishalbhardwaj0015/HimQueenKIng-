@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, MapPin, CheckCircle2, ArrowLeft } from "lucide-react";
-import { destinations } from "../data/travelData";
+import { Star, MapPin, CheckCircle2, ArrowLeft, Tag } from "lucide-react";
+import { destinations, budgetRanges } from "../data/travelData";
 import EnquiryForm from "../components/EnquiryForm";
 
 const DestinationDetail = () => {
@@ -12,15 +12,17 @@ const DestinationDetail = () => {
     return (
       <div className="pt-24 pb-20 min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Destination not found</h1>
-        <Link to="/destinations" className="text-orange-600 font-semibold hover:underline">← Back to Destinations</Link>
+        <Link to="/destinations" className="text-[#b8860b] font-semibold hover:underline">← Back to Destinations</Link>
       </div>
     );
   }
 
+  const budgetInfo = budgetRanges[dest.budget];
+
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/destinations" className="inline-flex items-center gap-2 text-gray-600 hover:text-orange-600 font-medium mb-6 mt-4 transition">
+        <Link to="/destinations" className="inline-flex items-center gap-2 text-gray-600 hover:text-[#b8860b] font-medium mb-6 mt-4 transition">
           <ArrowLeft size={18} /> Back to Destinations
         </Link>
 
@@ -47,6 +49,9 @@ const DestinationDetail = () => {
                   <span className="text-sm font-semibold">{dest.rating}</span>
                   <span className="text-xs text-gray-500">({dest.reviews.toLocaleString()} reviews)</span>
                 </div>
+                <div className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold text-white ${budgetInfo.color}`}>
+                  <Tag size={13} /> {budgetInfo.range}
+                </div>
                 <div className="flex flex-wrap gap-1.5">
                   {dest.tags.map((tag) => (
                     <span key={tag} className="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">{tag}</span>
@@ -70,9 +75,12 @@ const DestinationDetail = () => {
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <p className="text-sm text-gray-500 mb-1">Packages starting from</p>
-                <span className="text-3xl font-black text-orange-600">₹{dest.price.toLocaleString()}</span>
-                <p className="text-xs text-gray-400 mt-1">per person</p>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold text-white mb-3 ${budgetInfo.color}`}>
+                  <Tag size={14} /> {budgetInfo.range}
+                </div>
+                <p className="text-sm text-gray-500 mb-1">Budget Level</p>
+                <p className="text-lg font-bold text-gray-900">{budgetInfo.label}</p>
+                <p className="text-xs text-gray-400 mt-2">We'll design a custom itinerary within your budget</p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Clock, Users, Star, CheckCircle2, XCircle, MapPin, Mountain, ArrowLeft, Calendar, Route } from "lucide-react";
-import { tours } from "../data/travelData";
+import { Clock, Users, Star, CheckCircle2, XCircle, MapPin, Mountain, ArrowLeft, Route, Tag } from "lucide-react";
+import { tours, budgetRanges } from "../data/travelData";
 import EnquiryForm from "../components/EnquiryForm";
 
 const TourDetail = () => {
@@ -12,22 +12,23 @@ const TourDetail = () => {
     return (
       <div className="pt-24 pb-20 min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Tour not found</h1>
-        <Link to="/tours" className="text-orange-600 font-semibold hover:underline">← Back to Tours</Link>
+        <Link to="/tours" className="text-[#b8860b] font-semibold hover:underline">← Back to Tours</Link>
       </div>
     );
   }
 
+  const budgetInfo = budgetRanges[tour.budget];
+
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/tours" className="inline-flex items-center gap-2 text-gray-600 hover:text-orange-600 font-medium mb-6 mt-4 transition">
+        <Link to="/tours" className="inline-flex items-center gap-2 text-gray-600 hover:text-[#b8860b] font-medium mb-6 mt-4 transition">
           <ArrowLeft size={18} /> Back to Tours
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
 
-            {/* Hero */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl overflow-hidden shadow-sm">
               <div className="relative h-72 sm:h-96">
                 <img src={tour.image} alt={tour.title} className="w-full h-full object-cover" />
@@ -42,7 +43,6 @@ const TourDetail = () => {
               </div>
             </motion.div>
 
-            {/* Tour Info Tags */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl p-6 shadow-sm">
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-2 text-gray-700 text-sm bg-gray-50 px-4 py-2 rounded-full font-medium">
@@ -57,22 +57,23 @@ const TourDetail = () => {
                 <div className="flex items-center gap-1 text-sm bg-amber-50 px-4 py-2 rounded-full font-medium">
                   <Star size={14} fill="#f59e0b" color="#f59e0b" /> {tour.rating} ({tour.reviews} reviews)
                 </div>
+                <div className={`flex items-center gap-1 text-sm text-white px-4 py-2 rounded-full font-medium ${budgetInfo.color}`}>
+                  <Tag size={14} /> {budgetInfo.range}
+                </div>
               </div>
             </motion.div>
 
-            {/* Route */}
             {tour.route && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="bg-white rounded-2xl p-6 shadow-sm">
                 <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <Route size={20} className="text-orange-500" /> Route
+                  <Route size={20} className="text-[#b8860b]" /> Route
                 </h2>
-                <div className="bg-orange-50 rounded-xl p-4">
+                <div className="bg-[#faf9f6] rounded-xl p-4">
                   <p className="text-sm sm:text-base text-gray-800 font-semibold">{tour.route}</p>
                 </div>
               </motion.div>
             )}
 
-            {/* Highlights */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white rounded-2xl p-6 shadow-sm">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Main Highlights</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -84,17 +85,16 @@ const TourDetail = () => {
               </ul>
             </motion.div>
 
-            {/* Day-by-Day Itinerary */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="bg-white rounded-2xl p-6 shadow-sm">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Day-by-Day Itinerary</h2>
               <div className="space-y-4">
                 {tour.itinerary.map((day, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-[#b8860b] text-white flex items-center justify-center text-xs font-bold shrink-0">
                         {day.day.replace("Day ", "")}
                       </div>
-                      {i < tour.itinerary.length - 1 && <div className="w-0.5 flex-1 bg-orange-200 mt-2" />}
+                      {i < tour.itinerary.length - 1 && <div className="w-0.5 flex-1 bg-[#b8860b]/20 mt-2" />}
                     </div>
                     <div className="pb-5 flex-1">
                       <div className="bg-gray-50 rounded-xl p-4">
@@ -102,7 +102,7 @@ const TourDetail = () => {
                         <ul className="mt-2 space-y-1">
                           {day.activities.map((act, j) => (
                             <li key={j} className="text-sm text-gray-600 flex items-start gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 mt-1.5 shrink-0" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#b8860b] mt-1.5 shrink-0" />
                               {act}
                             </li>
                           ))}
@@ -117,7 +117,6 @@ const TourDetail = () => {
               </div>
             </motion.div>
 
-            {/* Package Includes */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="bg-white rounded-2xl p-6 shadow-sm">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Package Includes</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -129,7 +128,6 @@ const TourDetail = () => {
               </ul>
             </motion.div>
 
-            {/* Package Excludes */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="bg-white rounded-2xl p-6 shadow-sm">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Package Excludes</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -143,17 +141,15 @@ const TourDetail = () => {
 
           </div>
 
-          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-6">
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <p className="text-sm text-gray-500 mb-1">Starting from</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-orange-600">₹{tour.price.toLocaleString()}</span>
-                  <span className="text-sm text-gray-400 line-through">₹{tour.originalPrice.toLocaleString()}</span>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold text-white mb-3 ${budgetInfo.color}`}>
+                  <Tag size={14} /> {budgetInfo.range}
                 </div>
-                <p className="text-xs text-green-600 font-medium mt-1">Save ₹{(tour.originalPrice - tour.price).toLocaleString()} ({Math.round(((tour.originalPrice - tour.price) / tour.originalPrice) * 100)}% OFF)</p>
-                <p className="text-xs text-gray-400 mt-2">per person on twin sharing</p>
+                <p className="text-sm text-gray-500 mb-1">Budget Level</p>
+                <p className="text-lg font-bold text-gray-900">{budgetInfo.label}</p>
+                <p className="text-xs text-gray-400 mt-2">Get a custom quote based on your exact dates and preferences</p>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
