@@ -2,6 +2,7 @@ services:
   - type: web
     name: himqueenking
     runtime: node
+    rootDir: /
     region: oregon
     plan: free
     buildCommand: npm install && npm run build && cd server && npm install
