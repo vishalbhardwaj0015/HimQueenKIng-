@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -59,23 +58,21 @@ const App = () => {
   useEffect(() => { load(); }, [load]);
 
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="tours" element={<ManageTours />} />
-            <Route path="treks" element={<ManageTreks />} />
-            <Route path="hotels" element={<ManageHotels />} />
-            <Route path="packages" element={<ManagePackages />} />
-            <Route path="reviews" element={<ManageReviews />} />
-            <Route path="requests" element={<Requests />} />
-          </Route>
-          <Route path="*" element={<PublicLayout />} />
-        </Routes>
-      </BrowserRouter>
-    </HelmetProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="tours" element={<ManageTours />} />
+          <Route path="treks" element={<ManageTreks />} />
+          <Route path="hotels" element={<ManageHotels />} />
+          <Route path="packages" element={<ManagePackages />} />
+          <Route path="reviews" element={<ManageReviews />} />
+          <Route path="requests" element={<Requests />} />
+        </Route>
+        <Route path="*" element={<PublicLayout />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

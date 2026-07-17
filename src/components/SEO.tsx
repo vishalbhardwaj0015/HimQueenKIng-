@@ -1,4 +1,19 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
+
+const SITE_NAME = "HimQueenKing";
+const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80";
+const BASE_URL = "https://himqueenking.onrender.com";
+
+function setMeta(property: string, content: string, isName = false) {
+  const attr = isName ? "name" : "property";
+  let el = document.querySelector(`meta[${attr}="${property}"]`) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, property);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
 
 interface SEOProps {
   title?: string;
@@ -6,12 +21,7 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   url?: string;
-  type?: string;
 }
-
-const SITE_NAME = "HimQueenKing";
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80";
-const BASE_URL = "https://himqueenking.onrender.com";
 
 const SEO = ({
   title,
@@ -19,33 +29,29 @@ const SEO = ({
   keywords,
   image = DEFAULT_IMAGE,
   url = BASE_URL,
-  type = "website",
 }: SEOProps) => {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Best Himachal Pradesh & Himalaya Tour Packages 2026`;
-  const fullDesc = description || "Book curated tour packages to Shimla Manali, Spiti Valley, Leh Ladakh, Kasol, Rishikesh & more. Best travel agency in Himachal Pradesh.";
-  const fullKeywords = keywords || "himachal pradesh tour packages, shimla manali tour package, himalaya trekking, manali tour, spiti valley tour, leh ladakh tour, kasol backpacking, himachal trek, best travel agency himachal";
+  const fullDesc = description || "Book curated tour packages to Shimla Manali, Spiti Valley, Leh Ladakh, Kasol, Rishikesh & more.";
+  const fullKeywords = keywords || "himachal pradesh tour packages, shimla manali tour package, himalaya trekking, manali tour, spiti valley tour, leh ladakh tour";
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={fullDesc} />
-      <meta name="keywords" content={fullKeywords} />
-      <link rel="canonical" href={url} />
+  useEffect(() => {
+    document.title = fullTitle;
+    setMeta("description", fullDesc, true);
+    setMeta("keywords", fullKeywords, true);
 
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={fullDesc} />
-      <meta property="og:image" content={image} />
-      <meta property="og:site_name" content={SITE_NAME} />
+    setMeta("og:title", fullTitle);
+    setMeta("og:description", fullDesc);
+    setMeta("og:image", image);
+    setMeta("og:url", url);
+    setMeta("og:site_name", SITE_NAME);
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={fullDesc} />
-      <meta name="twitter:image" content={image} />
-    </Helmet>
-  );
+    setMeta("twitter:card", "summary_large_image");
+    setMeta("twitter:title", fullTitle);
+    setMeta("twitter:description", fullDesc);
+    setMeta("twitter:image", image);
+  }, [fullTitle, fullDesc, fullKeywords, image, url]);
+
+  return null;
 };
 
 export default SEO;
