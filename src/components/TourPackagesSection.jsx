@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Clock, Users, Mountain, Star, CheckCircle2, ArrowRight } from "lucide-react";
-import { handleBookClick } from "../utils/auth";
+import { Link } from "react-router-dom";
 
 const packages = [
   { id: 1, title: "Manali Snow Adventure", duration: "6D/5N", groupSize: "2–12",
@@ -81,10 +81,10 @@ const TourPackageCard = ({ pkg, index }) => {
               <span className="text-white/40 text-xs">/person</span>
             </div>
           </div>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} onClick={handleBookClick}
+          <Link to={`/tours/${pkg.id}`}
             className={`bg-gradient-to-r ${pkg.color} text-white font-semibold px-5 py-2.5 rounded-xl flex items-center gap-2 text-sm hover:opacity-90 transition`}>
-            Book Now <ArrowRight size={14} />
-          </motion.button>
+            View Details <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </motion.article>
