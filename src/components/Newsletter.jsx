@@ -42,7 +42,7 @@ const Newsletter = () => {
                 className="bg-[#b8860b] hover:bg-[#996f08] text-white font-semibold px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition disabled:opacity-60">
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                ) : (<><span>Subscribe</span><Send size={15}</>)}
+                ) : (<><span>Subscribe</span><Send size={15} /></>)}
               </motion.button>
             </form>
           ) : (
