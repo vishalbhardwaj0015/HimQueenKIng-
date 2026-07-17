@@ -9,10 +9,10 @@ const stats = [
   { icon: Shield, value: 15, suffix: " yrs", label: "Experience", color: "#1a1a2e" },
 ];
 
-const StatItem = ({ stat, index }: { stat: typeof stats[0]; index: number }) => {
+const StatItem = ({ stat, index }) => {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef(null);
   const Icon = stat.icon;
 
   useEffect(() => {

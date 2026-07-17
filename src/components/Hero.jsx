@@ -36,7 +36,7 @@ const Hero = () => {
 
   const slide = slides[current];
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (destination.trim()) {
       navigate(`/tours?search=${encodeURIComponent(destination.trim())}`);
@@ -46,7 +46,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[90vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-[90vh] min-h-150 flex flex-col items-center justify-center overflow-hidden">
       {/* Background */}
       <AnimatePresence mode="wait">
         <motion.div key={current}
@@ -56,7 +56,7 @@ const Hero = () => {
           exit={{ opacity: 0 }} transition={{ duration: 1.5 }}
         />
       </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/30 to-black/60" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 w-full max-w-5xl mx-auto flex flex-col items-center gap-8">

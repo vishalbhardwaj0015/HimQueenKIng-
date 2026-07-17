@@ -23,15 +23,14 @@ const Header = () => {
 
   useEffect(() => { setMobileOpen(false); }, [location]);
 
-  const isActive = (href: string) => {
+  const isActive = (href) => {
     if (href === "/") return location.pathname === "/";
     return location.pathname.startsWith(href);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" : "bg-white"
-    }`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100" : "bg-white"
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -50,11 +49,10 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                  isActive(link.href)
+                className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${isActive(link.href)
                     ? "text-[#b8860b] bg-[#b8860b]/5"
                     : "text-gray-600 hover:text-[#1a1a2e] hover:bg-gray-50"
-                }`}
+                  }`}
               >
                 {link.label}
               </a>
@@ -74,7 +72,7 @@ const Header = () => {
             </a>
             <a
               href="/dream-destination"
-              className="hidden sm:inline-flex btn-primary text-sm !py-2.5 !px-5"
+              className="hidden sm:inline-flex btn-primary text-sm py-2.5! px-5!"
             >
               Plan Your Trip
             </a>
@@ -99,11 +97,10 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
-                  isActive(link.href)
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors ${isActive(link.href)
                     ? "bg-[#b8860b]/5 text-[#b8860b]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                }`}
+                  }`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}

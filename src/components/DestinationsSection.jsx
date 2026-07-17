@@ -2,9 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { destinations, BudgetLevel, budgetRanges } from "../data/travelData";
+import { destinations, budgetRanges } from "../data/travelData";
 
-const filters: { key: string; label: string }[] = [
+const filters = [
   { key: "All", label: "All" },
   { key: "budget", label: "Budget" },
   { key: "mid", label: "Mid Range" },
@@ -12,7 +12,7 @@ const filters: { key: string; label: string }[] = [
   { key: "luxury", label: "Luxury" },
 ];
 
-const DestinationCard = ({ dest, index }: { dest: typeof destinations[0]; index: number }) => (
+const DestinationCard = ({ dest, index }) => (
   <motion.article className="card group"
     initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-50px" }}

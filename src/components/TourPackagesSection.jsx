@@ -5,7 +5,7 @@ import { tours, budgetRanges } from "../data/travelData";
 
 const packages = tours.slice(0, 3);
 
-const TourPackageCard = ({ pkg, index }: { pkg: typeof tours[0]; index: number }) => (
+const TourPackageCard = ({ pkg, index }) => (
   <motion.article className="card flex flex-col"
     initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-60px" }}
