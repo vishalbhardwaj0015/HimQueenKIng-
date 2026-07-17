@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Clock, Users, Star, CheckCircle2, ArrowRight, MapPin, Mountain, Search } from "lucide-react";
 import { tours } from "../data/travelData";
+import SEO from "../components/SEO";
 
 const difficulties = ["All", "Easy", "Moderate", "Challenging", "Hard"];
 
@@ -21,7 +22,14 @@ const Tours = () => {
   const diffColor = { Easy: "text-green-600 bg-green-50", Moderate: "text-amber-600 bg-amber-50", Challenging: "text-orange-600 bg-orange-50", Hard: "text-red-600 bg-red-50" };
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
+    <>
+      <SEO
+        title="Tour Packages — Shimla Manali, Spiti Valley, Leh Ladakh, Manali, Kasol | HimQueenKing"
+        description="Explore our curated tour packages to Shimla Manali, Spiti Valley, Leh Ladakh, Kasol, Rishikesh & more. Budget to luxury Himalaya tour packages with expert guides."
+        keywords="shimla manali tour package, manali tour package, spiti valley tour, leh ladakh tour package, kasol backpacking trip, himachal pradesh tour packages, himalaya tour packages, shimla tour, rishikesh tour package, kedarnath yatra, tour packages 2026"
+        url="https://himqueenking.onrender.com/tours"
+      />
+      <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -97,6 +105,7 @@ const Tours = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, TrendingUp, Calendar, Search, MessageCircle, ChevronDown, ChevronUp, UtensilsCrossed, Tent, MapPin } from "lucide-react";
+import SEO from "../components/SEO";
 
 const allTreks = [
   {
@@ -191,7 +192,14 @@ const Treks = () => {
   };
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
+    <>
+      <SEO
+        title="Best Trekking Packages in Himachal Pradesh & Uttarakhand — Himalaya Treks"
+        description="Discover the best trekking packages in Himachal Pradesh & Uttarakhand. Kheerganga, Chuddhar, Kinner Kailash, Shrikhand Mahadev, Hampta Pass, Kedarkantha treks with day-by-day itinerary, meals & tent info."
+        keywords="himachal pradesh trekking, himalaya trek packages, kheerganga trek, chuddhar trek, kinner kailash trek, shrikhand mahadev trek, hampta pass trek, kedarkantha trek, best treks in himachal, trekking packages india, himachal trek packages"
+        url="https://himqueenking.onrender.com/treks"
+      />
+      <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -343,6 +351,7 @@ const Treks = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

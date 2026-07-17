@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Clock, Users, Star, CheckCircle2, XCircle, MapPin, Mountain, ArrowLeft, Route, Tag } from "lucide-react";
 import { tours, budgetRanges } from "../data/travelData";
 import EnquiryForm from "../components/EnquiryForm";
+import SEO from "../components/SEO";
 
 const TourDetail = () => {
   const { id } = useParams();
@@ -21,6 +22,12 @@ const TourDetail = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50 dark:bg-[#0f0f1a]">
+      <SEO
+        title={`${tour.title} — Book Now | HimQueenKing`}
+        description={`Book ${tour.title} package — ${tour.duration} tour covering ${tour.destination}. ${tour.highlights.join(", ")}. Enquire now for best prices.`}
+        keywords={`${tour.title}, ${tour.destination} tour, himachal tour package, book ${tour.title}`}
+        url={`https://himqueenking.onrender.com/tours/${tour.id}`}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/tours" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#b8860b] font-medium mb-6 mt-4 transition">
           <ArrowLeft size={18} /> Back to Tours

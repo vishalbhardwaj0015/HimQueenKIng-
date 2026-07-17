@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Star, Search, Filter } from "lucide-react";
 import { destinations, budgetRanges } from "../data/travelData";
+import SEO from "../components/SEO";
 
 const tags = ["All", "Mountains", "Adventure", "Spiritual", "Trekking", "Backpacking", "Culture", "Remote"];
 const budgetLevels: { key: string; label: string }[] = [
@@ -26,8 +27,15 @@ const Destinations = () => {
   });
 
   return (
-    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
-      <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
+    <>
+      <SEO
+        title="Best Destinations in Himachal Pradesh & Uttarakhand 2026"
+        description="Discover the best destinations in Himachal Pradesh & Uttarakhand. Manali, Shimla, Spiti Valley, Dharamshala, Kasol, Rishikesh, Nainital, Kinnaur & more."
+        keywords="himachal pradesh destinations, best places to visit in himachal, shimla manali destinations, spiti valley, dharamshala, kasol, rishikesh, nainital, kinnaur, himachal tourist places, best places in india"
+        url="https://himqueenking.onrender.com/destinations"
+      />
+      <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
+        <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3 font-display">All Destinations</h1>
@@ -108,7 +116,7 @@ const Destinations = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

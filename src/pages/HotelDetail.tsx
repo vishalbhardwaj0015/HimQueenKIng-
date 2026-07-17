@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Star, MapPin, CheckCircle2, ArrowLeft, Tag } from "lucide-react";
 import { hotels, budgetRanges } from "../data/travelData";
 import EnquiryForm from "../components/EnquiryForm";
+import SEO from "../components/SEO";
 
 const HotelDetail = () => {
   const { id } = useParams();
@@ -21,6 +22,12 @@ const HotelDetail = () => {
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50 dark:bg-[#0f0f1a]">
+      <SEO
+        title={`${hotel.name} — Book Hotel | HimQueenKing`}
+        description={`${hotel.name} in ${hotel.location}. ${hotel.desc}`}
+        keywords={`${hotel.name}, ${hotel.location} hotel, himachal hotel, ${hotel.location} accommodation`}
+        url={`https://himqueenking.onrender.com/hotels/${hotel.id}`}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/hotels" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-[#b8860b] font-medium mb-6 mt-4 transition">
           <ArrowLeft size={18} /> Back to Hotels

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Car, Shield, Map, Headphones, Camera, Compass, Mountain, Users, Plane } from "lucide-react";
+import SEO from "../components/SEO";
 
 const services = [
   { icon: Car, title: "Premium Transport", desc: "Well-maintained AC vehicles, SUVs, and luxury buses for comfortable hill travel with experienced local drivers.", color: "#1a1a2e" },
@@ -21,8 +22,15 @@ const whyUs = [
 ];
 
 const Services = () => (
-  <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
-    <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
+  <>
+    <SEO
+      title="Our Services — Travel, Transport, Adventure & Photography Tours"
+      description="HimQueenKing offers premium transport, custom itineraries, travel insurance, photography tours, adventure activities & 24/7 support for your Himalayan trip."
+      keywords="himachal travel services, himalaya tour services, adventure activities himachal, photography tour india, travel agency services"
+      url="https://himqueenking.onrender.com/services"
+    />
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
+      <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
       <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=60')] bg-cover bg-center" />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3 font-display">Our Services</h1>
@@ -65,7 +73,7 @@ const Services = () => (
         </a>
       </div>
     </div>
-  </div>
+  </>
 );
 
 export default Services;
