@@ -28,14 +28,13 @@ const Contact = () => {
 
   if (submitted) {
     return (
-      <>
+      <div className="pt-24 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a] flex items-center justify-center px-4">
         <SEO
           title="Contact HimQueenKing — Book Your Himachal Pradesh Tour Package"
           description="Contact HimQueenKing to book your Himachal Pradesh, Shimla Manali, Spiti Valley or Ladakh tour package. Call +91 9805556015 or WhatsApp us."
           keywords="contact travel agency himachal, book himachal tour, shimla manali tour booking, himachal travel agency contact"
           url="https://himqueenking.onrender.com/contact"
         />
-        <div className="pt-24 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a] flex items-center justify-center px-4">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ type: "spring", stiffness: 200 }} className="bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-lg p-10 sm:p-14 text-center max-w-md w-full border border-gray-100 dark:border-gray-700">
           <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center">
             <CheckCircle size={36} className="text-green-500" />
@@ -47,20 +46,18 @@ const Contact = () => {
           </a>
         </motion.div>
       </div>
-    </>
     );
   }
 
   return (
-    <>
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <SEO
         title="Contact HimQueenKing — Book Your Himachal Pradesh Tour Package"
         description="Contact HimQueenKing to book your Himachal Pradesh, Shimla Manali, Spiti Valley or Ladakh tour package. Call +91 9805556015 or WhatsApp us."
         keywords="contact travel agency himachal, book himachal tour, shimla manali tour booking, himachal travel agency contact"
         url="https://himqueenking.onrender.com/contact"
       />
-      <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
-        {/* Hero */}
+      {/* Hero */}
         <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -159,7 +156,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

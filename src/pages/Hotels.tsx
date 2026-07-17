@@ -24,14 +24,13 @@ const Hotels = () => {
   });
 
   return (
-    <>
+    <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
       <SEO
         title="Hotels & Stays in Himachal Pradesh, Manali, Ladakh — Best Deals"
         description="Handpicked hotels, resorts, camps & homestays in Himachal Pradesh, Manali, Ladakh, Spiti, Kasol, Rishikesh. Budget to luxury stays for your Himalayan trip."
         keywords="himachal pradesh hotels, manali hotels, ladakh hotels, spiti homestay, kasol camps, best hotels in himachal, himachal resort, shimla manali hotel, rishikesh hotel, budget hotels himachal"
         url="https://himqueenking.onrender.com/hotels"
       />
-      <div className="pt-20 pb-20 min-h-screen bg-[#faf9f6] dark:bg-[#0f0f1a]">
         <div className="relative h-64 sm:h-80 bg-[#1a1a2e] overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=60')] bg-cover bg-center" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -102,7 +101,7 @@ const Hotels = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
