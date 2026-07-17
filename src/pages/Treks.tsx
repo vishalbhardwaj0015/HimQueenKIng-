@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mountain, Clock, TrendingUp, Calendar, Search, MessageCircle, ChevronDown, ChevronUp, UtensilsCrossed, Tent, MapPin } from "lucide-react";
+import { Clock, TrendingUp, Calendar, Search, MessageCircle, ChevronDown, ChevronUp, UtensilsCrossed, Tent, MapPin } from "lucide-react";
 
 const allTreks = [
   {
