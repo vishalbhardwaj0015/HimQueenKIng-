@@ -4,6 +4,7 @@ import { api } from "../api";
 import { useAuth } from "../store/authStore";
 import { useTheme } from "../store/themeStore";
 import { Mail, Lock, User, Eye, EyeOff, Loader2 } from "lucide-react";
+import logo from "../assets/myHimkingqeenlogo.png";
 
 const UserLogin = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -50,9 +51,11 @@ const UserLogin = () => {
         {/* Logo */}
         <div className="text-center mb-8">
           <a href="/" className="inline-flex items-center gap-2 mb-4">
-            <span className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-black text-sm shadow-lg shadow-orange-500/25">
-              HQK
-            </span>
+            <img
+              src={logo}
+              alt="HimQueenKing"
+              className="h-16 w-auto object-contain"
+            />
           </a>
           <h1 className={`text-2xl font-bold ${dark ? "text-white" : "text-gray-900"}`}>
             {isLogin ? "Welcome Back" : "Create Account"}

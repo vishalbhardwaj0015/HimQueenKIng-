@@ -2,21 +2,32 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Clock, Users, Star, CheckCircle2, ArrowRight, MapPin, Mountain, Search } from "lucide-react";
-import { tours } from "../data/travelData";
+import { tours, budgetRanges } from "../data/travelData";
+import type { BudgetLevel } from "../data/travelData";
 import SEO from "../components/SEO";
 
 const difficulties = ["All", "Easy", "Moderate", "Challenging", "Hard"];
+
+const budgetLevels: { key: "All" | BudgetLevel; label: string }[] = [
+  { key: "All", label: "All Budgets" },
+  { key: "budget", label: budgetRanges.budget.label },
+  { key: "mid", label: budgetRanges.mid.label },
+  { key: "premium", label: budgetRanges.premium.label },
+  { key: "luxury", label: budgetRanges.luxury.label },
+];
 
 const Tours = () => {
   const [searchParams] = useSearchParams();
   const initialSearch = searchParams.get("search") || "";
   const [diffFilter, setDiffFilter] = useState("All");
   const [search, setSearch] = useState(initialSearch);
+  const [budgetFilter, setBudgetFilter] = useState<string>(searchParams.get("budget") || "All");
 
   const filtered = tours.filter((t) => {
     const matchDiff = diffFilter === "All" || t.difficulty === diffFilter;
+    const matchBudget = budgetFilter === "All" || t.budget === budgetFilter;
     const matchSearch = t.title.toLowerCase().includes(search.toLowerCase()) || t.destination.toLowerCase().includes(search.toLowerCase());
-    return matchDiff && matchSearch;
+    return matchDiff && matchBudget && matchSearch;
   });
 
   const diffColor = { Easy: "text-green-600 bg-green-50", Moderate: "text-amber-600 bg-amber-50", Challenging: "text-orange-600 bg-orange-50", Hard: "text-red-600 bg-red-50" };
@@ -44,12 +55,22 @@ const Tours = () => {
           <input type="text" placeholder="Search tours by name or destination..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 outline-none text-sm" />
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-4">
           {difficulties.map((d) => (
             <button key={d} onClick={() => setDiffFilter(d)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
               diffFilter === d ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white dark:bg-[#1a1a2e] text-gray-600 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200 dark:border-gray-700"
             }`}>
               {d}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {budgetLevels.map((b) => (
+            <button key={b.key} onClick={() => setBudgetFilter(b.key)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
+              budgetFilter === b.key ? "bg-[#b8860b] text-white border-[#b8860b]" : "bg-white dark:bg-[#1a1a2e] text-gray-600 dark:text-gray-400 hover:border-[#b8860b] hover:text-[#b8860b] border-gray-200 dark:border-gray-700"
+            }`}>
+              {b.label}
             </button>
           ))}
         </div>
@@ -100,7 +121,7 @@ const Tours = () => {
         {filtered.length === 0 && (
           <div className="text-center py-20 text-gray-400 dark:text-gray-500">
             <p className="text-lg font-medium">No tours match your filters</p>
-            <p className="text-sm">Try adjusting your difficulty filter or search</p>
+            <p className="text-sm">Try adjusting your difficulty, budget filter or search</p>
           </div>
         )}
       </div>

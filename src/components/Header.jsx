@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Sun, Moon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../store/themeStore";
+import logo from "../assets/myHimkingqeenlogo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -43,12 +44,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2.5 shrink-0">
-            <span className="w-9 h-9 rounded-lg bg-[#1a1a2e] dark:bg-[#b8860b] flex items-center justify-center text-[#b8860b] dark:text-[#1a1a2e] font-bold text-sm">
-              HQK
-            </span>
-            <span className={`text-lg font-bold tracking-tight ${dark ? "text-white" : "text-[#1a1a2e]"}`}>
-              HimQueenKing
-            </span>
+            <img
+              src={logo}
+              alt="HimQueenKing"
+              className="h-10 lg:h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -84,19 +84,6 @@ const Header = () => {
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            <a
-              href="https://wa.me/919805556015"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`hidden sm:inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all ${
-                dark
-                  ? "text-gray-300 hover:text-[#b8860b] border border-gray-700 hover:border-[#b8860b]"
-                  : "text-gray-700 hover:text-[#b8860b] border border-gray-200 hover:border-[#b8860b]"
-              }`}
-            >
-              <Phone size={15} />
-              Call Now
-            </a>
             <a
               href="/dream-destination"
               className="hidden sm:inline-flex btn-primary text-sm py-2.5! px-5!"
